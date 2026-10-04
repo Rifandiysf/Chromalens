@@ -18,18 +18,16 @@ function createPaletteEntry(name: string, color: RgbaColor): PaletteEntry {
 }
 
 function createCssNamedColorEntries(): PaletteEntry[] {
-  return (
-    Object.entries(colorsNamed)
-      .filter(([colorName]) => !colorName.includes('grey'))
-      .map(([colorName, packedRgbValue]) =>
-        createPaletteEntry(colorName, {
-          red: (packedRgbValue >> (BITS_PER_COLOR_CHANNEL * 2)) & CHANNEL_BIT_MASK,
-          green: (packedRgbValue >> BITS_PER_COLOR_CHANNEL) & CHANNEL_BIT_MASK,
-          blue: packedRgbValue & CHANNEL_BIT_MASK,
-          alpha: 1,
-        }),
-      )
-  );
+  return Object.entries(colorsNamed)
+    .filter(([colorName]) => !colorName.includes('grey'))
+    .map(([colorName, packedRgbValue]) =>
+      createPaletteEntry(colorName, {
+        red: (packedRgbValue >> (BITS_PER_COLOR_CHANNEL * 2)) & CHANNEL_BIT_MASK,
+        green: (packedRgbValue >> BITS_PER_COLOR_CHANNEL) & CHANNEL_BIT_MASK,
+        blue: packedRgbValue & CHANNEL_BIT_MASK,
+        alpha: 1,
+      }),
+    );
 }
 
 function createTailwindColorEntries(): PaletteEntry[] {

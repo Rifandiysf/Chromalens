@@ -21,7 +21,9 @@ export function InspectorApp({ shadowHost, onExit }: InspectorAppProps) {
   const highlightRectangle = useElementRectangle(activeElement);
 
   useEffect(() => {
-    promoteToTopLayer(shadowHost);
+    if (activeElement) {
+      promoteToTopLayer(shadowHost);
+    }
   }, [shadowHost, activeElement]);
 
   return (
