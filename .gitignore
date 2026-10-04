@@ -1,0 +1,9 @@
+node_modules
+.output
+.wxt
+.wxt-cache
+stats.html
+*.zip
+.env
+.DS_Store
+coverage
